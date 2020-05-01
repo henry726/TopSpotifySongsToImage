@@ -1,0 +1,2 @@
+Requires Pillow for Python
+pip install pillow
