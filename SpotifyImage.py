@@ -1,13 +1,13 @@
-from PIL import Image
+from PIL import Image, ImageEnhance
 import requests
 import json
 from io import BytesIO
 
 imgurls = []
-
 token = input("Token: ")
-offset = input("Offset: ")
 term = input("short, medium, or long Term: ")
+offset = input("Offset: ")
+colorplus = input("Color Enhance: ")
 headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
@@ -34,4 +34,6 @@ for x in range(0, len(imgurls)):
     if(xpos == 1905):
         xpos = 15
         ypos += 210
+converter = ImageEnhance.Color(songimg)
+songimg = converter.enhance(float(colorplus))
 songimg.save('finalspot.png')
